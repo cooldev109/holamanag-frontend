@@ -1,0 +1,21 @@
+{
+  "brand": "Reservaro",
+  "nav.home": "Inicio",
+  "nav.login": "Iniciar sesión",
+  "nav.logout": "Cerrar sesión",
+  "nav.admin": "Administración",
+  "language.en": "English",
+  "language.es": "Español",
+  "language.de": "Deutsch",
+  "language.pt": "Português",
+  "language.nl": "Nederlands",
+  "actions.new": "Nuevo",
+  "actions.edit": "Editar",
+  "actions.save": "Guardar",
+  "actions.cancel": "Cancelar",
+  "actions.delete": "Eliminar",
+  "actions.view": "Ver",
+  "status.loading": "Cargando…",
+  "status.empty": "Sin datos",
+  "status.error": "Algo salió mal"
+}

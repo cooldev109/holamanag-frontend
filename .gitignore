@@ -1,0 +1,63 @@
+# ===========================================
+# FRONTEND SPECIFIC IGNORES
+# ===========================================
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+out/
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Cache
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# Testing
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary
+*.tmp
+*.temp
+*.local

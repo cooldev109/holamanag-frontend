@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "superadmin": "Superadministrador",
+    "dashboard": "Painel",
+    "users": "Usuários",
+    "settings": "Configurações",
+    "backToAdmin": "Voltar ao Admin",
+    "logout": "Sair"
+  },
+  "dashboard": {
+    "title": "Painel do Superadministrador",
+    "stats": {
+      "totalUsers": "Total de Usuários",
+      "totalProperties": "Total de Propriedades",
+      "totalBookings": "Total de Reservas",
+      "activeUsers": "Usuários Ativos",
+      "thisWeek": "Esta Semana",
+      "last7Days": "Últimos 7 Dias",
+      "admins": "Administradores",
+      "supervisors": "Supervisores",
+      "clients": "Clientes"
+    },
+    "actions": {
+      "createUser": "Criar Novo Usuário",
+      "viewUsers": "Ver Todos os Usuários",
+      "systemSettings": "Configurações do Sistema"
+    },
+    "recentUsers": {
+      "title": "Usuários Recentes",
+      "name": "Nome",
+      "email": "E-mail",
+      "role": "Função",
+      "createdAt": "Data de Criação",
+      "noUsers": "Nenhum usuário encontrado"
+    },
+    "loading": "Carregando painel..."
+  },
+  "users": {
+    "title": "Gestão de Usuários",
+    "search": "Pesquisar por nome ou e-mail",
+    "filters": {
+      "allRoles": "Todas as Funções",
+      "admin": "Administrador",
+      "supervisor": "Supervisor",
+      "client": "Cliente"
+    },
+    "table": {
+      "name": "Nome",
+      "email": "E-mail",
+      "role": "Função",
+      "status": "Status",
+      "createdAt": "Data de Criação",
+      "actions": "Ações"
+    },
+    "status": {
+      "active": "Ativo",
+      "inactive": "Inativo"
+    },
+    "actions": {
+      "edit": "Editar",
+      "delete": "Excluir",
+      "activate": "Ativar",
+      "deactivate": "Desativar",
+      "createUser": "Criar Usuário"
+    },
+    "form": {
+      "title": "Formulário de Usuário",
+      "createTitle": "Criar Novo Usuário",
+      "editTitle": "Editar Usuário",
+      "email": "E-mail",
+      "password": "Senha",
+      "firstName": "Nome",
+      "lastName": "Sobrenome",
+      "role": "Função",
+      "status": "Status",
+      "save": "Salvar",
+      "cancel": "Cancelar"
+    },
+    "validation": {
+      "emailRequired": "E-mail é obrigatório",
+      "emailInvalid": "Formato de e-mail inválido",
+      "passwordRequired": "Senha é obrigatória",
+      "passwordMin": "A senha deve ter pelo menos 8 caracteres",
+      "firstNameRequired": "Nome é obrigatório",
+      "lastNameRequired": "Sobrenome é obrigatório",
+      "roleRequired": "Função é obrigatória"
+    },
+    "confirmDelete": "Tem certeza de que deseja excluir este usuário?",
+    "deleteSuccess": "Usuário excluído com sucesso",
+    "createSuccess": "Usuário criado com sucesso",
+    "updateSuccess": "Usuário atualizado com sucesso",
+    "loading": "Carregando usuários...",
+    "noResults": "Nenhum usuário encontrado",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Próximo",
+      "page": "Página {{current}} de {{total}}"
+    }
+  },
+  "settings": {
+    "title": "Configurações do Sistema",
+    "application": {
+      "title": "Configurações da Aplicação",
+      "appName": "Nome da Aplicação",
+      "defaultLanguage": "Idioma Padrão",
+      "defaultTimezone": "Fuso Horário Padrão"
+    },
+    "email": {
+      "title": "Configurações de E-mail",
+      "smtpHost": "Host SMTP",
+      "smtpPort": "Porta SMTP",
+      "smtpEmail": "E-mail SMTP",
+      "smtpPassword": "Senha SMTP",
+      "testEmail": "Testar E-mail"
+    },
+    "security": {
+      "title": "Configurações de Segurança",
+      "jwtExpiration": "Expiração do Token JWT (horas)",
+      "maxLoginAttempts": "Máximo de Tentativas de Login",
+      "lockDuration": "Duração do Bloqueio de Conta (minutos)"
+    },
+    "actions": {
+      "save": "Salvar Alterações",
+      "reset": "Redefinir",
+      "saving": "Salvando..."
+    },
+    "messages": {
+      "saveSuccess": "Configurações salvas com sucesso",
+      "testEmailSuccess": "E-mail de teste enviado com sucesso",
+      "error": "Ocorreu um erro"
+    },
+    "loading": "Carregando configurações..."
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Erro",
+    "success": "Sucesso",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar"
+  }
+}
+
+
+

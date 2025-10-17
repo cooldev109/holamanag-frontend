@@ -1,0 +1,52 @@
+{
+  "role": "Supervisor",
+  "roleShort": "Supervisor",
+  "viewOnly": "View Only - No Editing Allowed",
+  
+  "nav": {
+    "dashboard": "Dashboard",
+    "properties": "Properties",
+    "bookings": "Bookings",
+    "inventory": "Inventory",
+    "reports": "Reports"
+  },
+
+  "dashboard": {
+    "title": "Supervisor Dashboard",
+    "subtitle": "Monitor operations and view key metrics",
+    "welcome": "Welcome back",
+    "overview": "System Overview",
+    "kpis": {
+      "occupancy": "Occupancy Rate",
+      "revenue": "Monthly Revenue",
+      "bookings": "New Bookings",
+      "properties": "Total Properties"
+    },
+    "recentActivity": "Recent Activity",
+    "noActivity": "No recent activity"
+  },
+
+  "properties": {
+    "title": "Property Oversight",
+    "subtitle": "View all properties in the system",
+    "viewOnly": "You have view-only access to properties",
+    "totalProperties": "Total Properties",
+    "activeProperties": "Active",
+    "inactiveProperties": "Inactive",
+    "totalRooms": "Total Rooms",
+    "search": "Search properties...",
+    "noData": "No properties found"
+  },
+
+  "bookings": {
+    "title": "Booking Oversight",
+    "subtitle": "View all bookings and reservations",
+    "viewOnly": "You have view-only access to bookings",
+    "totalBookings": "Total Bookings",
+    "search": "Search by guest email...",
+    "noData": "No bookings found"
+  }
+}
+
+
+

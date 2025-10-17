@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "superadmin": "Superadministrador",
+    "dashboard": "Panel",
+    "users": "Usuarios",
+    "settings": "Configuración",
+    "backToAdmin": "Volver a Admin",
+    "logout": "Cerrar sesión"
+  },
+  "dashboard": {
+    "title": "Panel de Superadministrador",
+    "stats": {
+      "totalUsers": "Total de Usuarios",
+      "totalProperties": "Total de Propiedades",
+      "totalBookings": "Total de Reservas",
+      "activeUsers": "Usuarios Activos",
+      "thisWeek": "Esta Semana",
+      "last7Days": "Últimos 7 Días",
+      "admins": "Administradores",
+      "supervisors": "Supervisores",
+      "clients": "Clientes"
+    },
+    "actions": {
+      "createUser": "Crear Nuevo Usuario",
+      "viewUsers": "Ver Todos los Usuarios",
+      "systemSettings": "Configuración del Sistema"
+    },
+    "recentUsers": {
+      "title": "Usuarios Recientes",
+      "name": "Nombre",
+      "email": "Correo",
+      "role": "Rol",
+      "createdAt": "Fecha de Creación",
+      "noUsers": "No se encontraron usuarios"
+    },
+    "loading": "Cargando panel..."
+  },
+  "users": {
+    "title": "Gestión de Usuarios",
+    "search": "Buscar por nombre o correo",
+    "filters": {
+      "allRoles": "Todos los Roles",
+      "admin": "Administrador",
+      "supervisor": "Supervisor",
+      "client": "Cliente"
+    },
+    "table": {
+      "name": "Nombre",
+      "email": "Correo",
+      "role": "Rol",
+      "status": "Estado",
+      "createdAt": "Fecha de Creación",
+      "actions": "Acciones"
+    },
+    "status": {
+      "active": "Activo",
+      "inactive": "Inactivo"
+    },
+    "actions": {
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "activate": "Activar",
+      "deactivate": "Desactivar",
+      "createUser": "Crear Usuario"
+    },
+    "form": {
+      "title": "Formulario de Usuario",
+      "createTitle": "Crear Nuevo Usuario",
+      "editTitle": "Editar Usuario",
+      "email": "Correo Electrónico",
+      "password": "Contraseña",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "role": "Rol",
+      "status": "Estado",
+      "save": "Guardar",
+      "cancel": "Cancelar"
+    },
+    "validation": {
+      "emailRequired": "El correo es obligatorio",
+      "emailInvalid": "Formato de correo inválido",
+      "passwordRequired": "La contraseña es obligatoria",
+      "passwordMin": "La contraseña debe tener al menos 8 caracteres",
+      "firstNameRequired": "El nombre es obligatorio",
+      "lastNameRequired": "El apellido es obligatorio",
+      "roleRequired": "El rol es obligatorio"
+    },
+    "confirmDelete": "¿Está seguro de que desea eliminar este usuario?",
+    "deleteSuccess": "Usuario eliminado exitosamente",
+    "createSuccess": "Usuario creado exitosamente",
+    "updateSuccess": "Usuario actualizado exitosamente",
+    "loading": "Cargando usuarios...",
+    "noResults": "No se encontraron usuarios",
+    "pagination": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "page": "Página {{current}} de {{total}}"
+    }
+  },
+  "settings": {
+    "title": "Configuración del Sistema",
+    "application": {
+      "title": "Configuración de Aplicación",
+      "appName": "Nombre de la Aplicación",
+      "defaultLanguage": "Idioma Predeterminado",
+      "defaultTimezone": "Zona Horaria Predeterminada"
+    },
+    "email": {
+      "title": "Configuración de Correo",
+      "smtpHost": "Host SMTP",
+      "smtpPort": "Puerto SMTP",
+      "smtpEmail": "Correo SMTP",
+      "smtpPassword": "Contraseña SMTP",
+      "testEmail": "Probar Correo"
+    },
+    "security": {
+      "title": "Configuración de Seguridad",
+      "jwtExpiration": "Expiración de Token JWT (horas)",
+      "maxLoginAttempts": "Máximo de Intentos de Inicio de Sesión",
+      "lockDuration": "Duración de Bloqueo de Cuenta (minutos)"
+    },
+    "actions": {
+      "save": "Guardar Cambios",
+      "reset": "Restablecer",
+      "saving": "Guardando..."
+    },
+    "messages": {
+      "saveSuccess": "Configuración guardada exitosamente",
+      "testEmailSuccess": "Correo de prueba enviado exitosamente",
+      "error": "Ocurrió un error"
+    },
+    "loading": "Cargando configuración..."
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar"
+  }
+}
+
+
+

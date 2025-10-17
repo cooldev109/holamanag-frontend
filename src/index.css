@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Channel Manager Design System */
+
+@layer base {
+  :root {
+    /* Core neutral palette */
+    --background: 0 0% 98%;
+    --foreground: 220 9% 8%;
+
+    /* Card system with soft shadows */
+    --card: 0 0% 100%;
+    --card-foreground: 220 9% 8%;
+
+    /* Popovers and overlays */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 9% 8%;
+
+    /* Primary brand colors - professional blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 55%;
+    
+    /* Secondary actions */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 9% 15%;
+    --secondary-hover: 220 14% 92%;
+
+    /* Muted elements */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent for highlights */
+    --accent: 47 96% 89%;
+    --accent-foreground: 26 83% 14%;
+
+    /* Status colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 26 83% 14%;
+
+    /* Borders and inputs */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --input-focus: 217 91% 60%;
+    --ring: 217 91% 60%;
+
+    /* Professional gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 14% 98%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 98%), hsl(220 14% 96%));
+
+    /* Shadows for depth */
+    --shadow-sm: 0 1px 2px 0 hsl(220 9% 8% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 9% 8% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(220 9% 8% / 0.1);
+    --shadow-card: 0 2px 8px -1px hsl(220 9% 8% / 0.08);
+    --shadow-card-hover: 0 8px 25px -4px hsl(220 9% 8% / 0.15);
+
+    /* Animations */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Layout */
+    --radius: 1rem;
+    --radius-lg: 1.5rem;
+    --navbar-height: 4rem;
+
+    /* Typography scale */
+    --font-heading: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .dark {
+    --background: 220 9% 8%;
+    --foreground: 0 0% 96%;
+
+    --card: 220 9% 12%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 220 9% 12%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 217 91% 65%;
+    --primary-foreground: 0 0% 8%;
+    --primary-hover: 217 91% 70%;
+
+    --secondary: 220 9% 18%;
+    --secondary-foreground: 0 0% 88%;
+    --secondary-hover: 220 9% 22%;
+
+    --muted: 220 9% 18%;
+    --muted-foreground: 220 9% 60%;
+
+    --accent: 47 96% 20%;
+    --accent-foreground: 47 96% 89%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 96%;
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 96%;
+    --warning: 43 96% 65%;
+    --warning-foreground: 26 83% 8%;
+
+    --border: 220 9% 20%;
+    --input: 220 9% 20%;
+    --input-focus: 217 91% 65%;
+    --ring: 217 91% 65%;
+
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 65%), hsl(217 91% 75%));
+    --gradient-card: linear-gradient(145deg, hsl(220 9% 12%), hsl(220 9% 15%));
+    --gradient-subtle: linear-gradient(180deg, hsl(220 9% 8%), hsl(220 9% 12%));
+
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.4);
+    --shadow-card: 0 2px 8px -1px hsl(0 0% 0% / 0.25);
+    --shadow-card-hover: 0 8px 25px -4px hsl(0 0% 0% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Focus styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Smooth scrolling with reduced motion support */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}

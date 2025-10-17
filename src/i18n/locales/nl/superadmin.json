@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "superadmin": "Superbeheerder",
+    "dashboard": "Dashboard",
+    "users": "Gebruikers",
+    "settings": "Instellingen",
+    "backToAdmin": "Terug naar Admin",
+    "logout": "Uitloggen"
+  },
+  "dashboard": {
+    "title": "Superbeheerder Dashboard",
+    "stats": {
+      "totalUsers": "Totaal Gebruikers",
+      "totalProperties": "Totaal Eigenschappen",
+      "totalBookings": "Totaal Boekingen",
+      "activeUsers": "Actieve Gebruikers",
+      "thisWeek": "Deze Week",
+      "last7Days": "Laatste 7 Dagen",
+      "admins": "Beheerders",
+      "supervisors": "Supervisors",
+      "clients": "Klanten"
+    },
+    "actions": {
+      "createUser": "Nieuwe Gebruiker Aanmaken",
+      "viewUsers": "Alle Gebruikers Bekijken",
+      "systemSettings": "Systeeminstellingen"
+    },
+    "recentUsers": {
+      "title": "Recente Gebruikers",
+      "name": "Naam",
+      "email": "E-mail",
+      "role": "Rol",
+      "createdAt": "Aanmaakdatum",
+      "noUsers": "Geen gebruikers gevonden"
+    },
+    "loading": "Dashboard laden..."
+  },
+  "users": {
+    "title": "Gebruikersbeheer",
+    "search": "Zoeken op naam of e-mail",
+    "filters": {
+      "allRoles": "Alle Rollen",
+      "admin": "Beheerder",
+      "supervisor": "Supervisor",
+      "client": "Klant"
+    },
+    "table": {
+      "name": "Naam",
+      "email": "E-mail",
+      "role": "Rol",
+      "status": "Status",
+      "createdAt": "Aanmaakdatum",
+      "actions": "Acties"
+    },
+    "status": {
+      "active": "Actief",
+      "inactive": "Inactief"
+    },
+    "actions": {
+      "edit": "Bewerken",
+      "delete": "Verwijderen",
+      "activate": "Activeren",
+      "deactivate": "Deactiveren",
+      "createUser": "Gebruiker Aanmaken"
+    },
+    "form": {
+      "title": "Gebruikersformulier",
+      "createTitle": "Nieuwe Gebruiker Aanmaken",
+      "editTitle": "Gebruiker Bewerken",
+      "email": "E-mail",
+      "password": "Wachtwoord",
+      "firstName": "Voornaam",
+      "lastName": "Achternaam",
+      "role": "Rol",
+      "status": "Status",
+      "save": "Opslaan",
+      "cancel": "Annuleren"
+    },
+    "validation": {
+      "emailRequired": "E-mail is verplicht",
+      "emailInvalid": "Ongeldig e-mailformaat",
+      "passwordRequired": "Wachtwoord is verplicht",
+      "passwordMin": "Wachtwoord moet minimaal 8 tekens zijn",
+      "firstNameRequired": "Voornaam is verplicht",
+      "lastNameRequired": "Achternaam is verplicht",
+      "roleRequired": "Rol is verplicht"
+    },
+    "confirmDelete": "Weet u zeker dat u deze gebruiker wilt verwijderen?",
+    "deleteSuccess": "Gebruiker succesvol verwijderd",
+    "createSuccess": "Gebruiker succesvol aangemaakt",
+    "updateSuccess": "Gebruiker succesvol bijgewerkt",
+    "loading": "Gebruikers laden...",
+    "noResults": "Geen gebruikers gevonden",
+    "pagination": {
+      "previous": "Vorige",
+      "next": "Volgende",
+      "page": "Pagina {{current}} van {{total}}"
+    }
+  },
+  "settings": {
+    "title": "Systeeminstellingen",
+    "application": {
+      "title": "Applicatie-instellingen",
+      "appName": "Applicatienaam",
+      "defaultLanguage": "Standaardtaal",
+      "defaultTimezone": "Standaard Tijdzone"
+    },
+    "email": {
+      "title": "E-mailinstellingen",
+      "smtpHost": "SMTP-host",
+      "smtpPort": "SMTP-poort",
+      "smtpEmail": "SMTP-e-mail",
+      "smtpPassword": "SMTP-wachtwoord",
+      "testEmail": "E-mail Testen"
+    },
+    "security": {
+      "title": "Beveiligingsinstellingen",
+      "jwtExpiration": "JWT-tokenverloop (uren)",
+      "maxLoginAttempts": "Maximaal Aantal Inlogpogingen",
+      "lockDuration": "Accountvergrendelingsduur (minuten)"
+    },
+    "actions": {
+      "save": "Wijzigingen Opslaan",
+      "reset": "Resetten",
+      "saving": "Opslaan..."
+    },
+    "messages": {
+      "saveSuccess": "Instellingen succesvol opgeslagen",
+      "testEmailSuccess": "Test-e-mail succesvol verzonden",
+      "error": "Er is een fout opgetreden"
+    },
+    "loading": "Instellingen laden..."
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Fout",
+    "success": "Succes",
+    "confirm": "Bevestigen",
+    "cancel": "Annuleren"
+  }
+}
+
+
+

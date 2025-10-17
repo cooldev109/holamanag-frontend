@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "superadmin": "Superadmin",
+    "dashboard": "Dashboard",
+    "users": "Users",
+    "settings": "Settings",
+    "backToAdmin": "Back to Admin",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "title": "Superadmin Dashboard",
+    "stats": {
+      "totalUsers": "Total Users",
+      "totalProperties": "Total Properties",
+      "totalBookings": "Total Bookings",
+      "activeUsers": "Active Users",
+      "thisWeek": "This Week",
+      "last7Days": "Last 7 Days",
+      "admins": "Admins",
+      "supervisors": "Supervisors",
+      "clients": "Clients"
+    },
+    "actions": {
+      "createUser": "Create New User",
+      "viewUsers": "View All Users",
+      "systemSettings": "System Settings"
+    },
+    "recentUsers": {
+      "title": "Recent Users",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "createdAt": "Created Date",
+      "noUsers": "No users found"
+    },
+    "loading": "Loading dashboard..."
+  },
+  "users": {
+    "title": "User Management",
+    "search": "Search by name or email",
+    "filters": {
+      "allRoles": "All Roles",
+      "admin": "Admin",
+      "supervisor": "Supervisor",
+      "client": "Client"
+    },
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "createdAt": "Created Date",
+      "actions": "Actions"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "createUser": "Create User"
+    },
+    "form": {
+      "title": "User Form",
+      "createTitle": "Create New User",
+      "editTitle": "Edit User",
+      "email": "Email",
+      "password": "Password",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "role": "Role",
+      "status": "Status",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "validation": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email format",
+      "passwordRequired": "Password is required",
+      "passwordMin": "Password must be at least 8 characters",
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "roleRequired": "Role is required"
+    },
+    "confirmDelete": "Are you sure you want to delete this user?",
+    "deleteSuccess": "User deleted successfully",
+    "createSuccess": "User created successfully",
+    "updateSuccess": "User updated successfully",
+    "loading": "Loading users...",
+    "noResults": "No users found",
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "page": "Page {{current}} of {{total}}"
+    }
+  },
+  "settings": {
+    "title": "System Settings",
+    "application": {
+      "title": "Application Settings",
+      "appName": "Application Name",
+      "defaultLanguage": "Default Language",
+      "defaultTimezone": "Default Timezone"
+    },
+    "email": {
+      "title": "Email Settings",
+      "smtpHost": "SMTP Host",
+      "smtpPort": "SMTP Port",
+      "smtpEmail": "SMTP Email",
+      "smtpPassword": "SMTP Password",
+      "testEmail": "Test Email"
+    },
+    "security": {
+      "title": "Security Settings",
+      "jwtExpiration": "JWT Token Expiration (hours)",
+      "maxLoginAttempts": "Max Login Attempts",
+      "lockDuration": "Account Lock Duration (minutes)"
+    },
+    "actions": {
+      "save": "Save Changes",
+      "reset": "Reset",
+      "saving": "Saving..."
+    },
+    "messages": {
+      "saveSuccess": "Settings saved successfully",
+      "testEmailSuccess": "Test email sent successfully",
+      "error": "An error occurred"
+    },
+    "loading": "Loading settings..."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  }
+}
+
+
+

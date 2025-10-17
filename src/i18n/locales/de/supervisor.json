@@ -1,0 +1,52 @@
+{
+  "role": "Supervisor",
+  "roleShort": "Aufsicht",
+  "viewOnly": "Nur Ansicht - Keine Bearbeitung Erlaubt",
+  
+  "nav": {
+    "dashboard": "Dashboard",
+    "properties": "Immobilien",
+    "bookings": "Buchungen",
+    "inventory": "Inventar",
+    "reports": "Berichte"
+  },
+
+  "dashboard": {
+    "title": "Supervisor Dashboard",
+    "subtitle": "Betrieb überwachen und Kennzahlen anzeigen",
+    "welcome": "Willkommen zurück",
+    "overview": "Systemübersicht",
+    "kpis": {
+      "occupancy": "Belegungsrate",
+      "revenue": "Monatlicher Umsatz",
+      "bookings": "Neue Buchungen",
+      "properties": "Immobilien Gesamt"
+    },
+    "recentActivity": "Letzte Aktivität",
+    "noActivity": "Keine aktuelle Aktivität"
+  },
+
+  "properties": {
+    "title": "Immobilienaufsicht",
+    "subtitle": "Alle Immobilien im System anzeigen",
+    "viewOnly": "Sie haben nur Ansichtszugriff auf Immobilien",
+    "totalProperties": "Immobilien Gesamt",
+    "activeProperties": "Aktiv",
+    "inactiveProperties": "Inaktiv",
+    "totalRooms": "Zimmer Gesamt",
+    "search": "Immobilien suchen...",
+    "noData": "Keine Immobilien gefunden"
+  },
+
+  "bookings": {
+    "title": "Buchungsaufsicht",
+    "subtitle": "Alle Buchungen anzeigen",
+    "viewOnly": "Sie haben nur Ansichtszugriff auf Buchungen",
+    "totalBookings": "Buchungen Gesamt",
+    "search": "Nach Gast-E-Mail suchen...",
+    "noData": "Keine Buchungen gefunden"
+  }
+}
+
+
+

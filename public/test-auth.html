@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Auth Test - Reservario</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .success { color: green; }
+        .error { color: red; }
+        button { padding: 10px 20px; margin: 10px 0; cursor: pointer; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>Reservario Authentication Test</h1>
+
+    <h2>Step 1: Login</h2>
+    <input type="email" id="email" placeholder="Email" value="admin@reservario.com" style="width: 300px; padding: 8px;">
+    <br>
+    <input type="password" id="password" placeholder="Password" value="Admin@123" style="width: 300px; padding: 8px;">
+    <br>
+    <button onclick="login()">Login</button>
+
+    <div id="loginResult"></div>
+
+    <h2>Step 2: Check Token</h2>
+    <button onclick="checkToken()">Check Token in LocalStorage</button>
+    <div id="tokenResult"></div>
+
+    <h2>Step 3: Test API Call</h2>
+    <button onclick="testAPI()">Test Properties API</button>
+    <div id="apiResult"></div>
+
+    <script>
+        async function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('loginResult');
+
+            resultDiv.innerHTML = '<p>Logging in...</p>';
+
+            try {
+                const response = await fetch('http://localhost:3000/api/v1/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    const token = data.data.tokens.accessToken;
+                    localStorage.setItem('token', token);
+                    resultDiv.innerHTML = '<p class="success">✅ Login successful! Token saved to localStorage.</p>';
+                } else {
+                    resultDiv.innerHTML = `<p class="error">❌ Login failed: ${data.message}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+
+        function checkToken() {
+            const token = localStorage.getItem('token');
+            const resultDiv = document.getElementById('tokenResult');
+
+            if (token) {
+                resultDiv.innerHTML = `
+                    <p class="success">✅ Token found in localStorage!</p>
+                    <pre>${token.substring(0, 50)}...</pre>
+                `;
+            } else {
+                resultDiv.innerHTML = '<p class="error">❌ No token found in localStorage. Please login first.</p>';
+            }
+        }
+
+        async function testAPI() {
+            const token = localStorage.getItem('token');
+            const resultDiv = document.getElementById('apiResult');
+
+            if (!token) {
+                resultDiv.innerHTML = '<p class="error">❌ No token found. Please login first.</p>';
+                return;
+            }
+
+            resultDiv.innerHTML = '<p>Testing API...</p>';
+
+            try {
+                const response = await fetch('http://localhost:3000/api/v1/properties', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    }
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ API call successful!</p>
+                        <p>Found ${data.data.properties.length} properties:</p>
+                        <pre>${JSON.stringify(data.data.properties.map(p => ({ name: p.name, id: p._id })), null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<p class="error">❌ API error: ${data.message}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ Error: ${error.message}</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

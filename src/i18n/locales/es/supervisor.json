@@ -1,0 +1,52 @@
+{
+  "role": "Supervisor",
+  "roleShort": "Supervisor",
+  "viewOnly": "Solo Visualización - No se Permite Edición",
+  
+  "nav": {
+    "dashboard": "Panel",
+    "properties": "Propiedades",
+    "bookings": "Reservas",
+    "inventory": "Inventario",
+    "reports": "Informes"
+  },
+
+  "dashboard": {
+    "title": "Panel del Supervisor",
+    "subtitle": "Monitorear operaciones y ver métricas clave",
+    "welcome": "Bienvenido de nuevo",
+    "overview": "Resumen del Sistema",
+    "kpis": {
+      "occupancy": "Tasa de Ocupación",
+      "revenue": "Ingresos Mensuales",
+      "bookings": "Nuevas Reservas",
+      "properties": "Propiedades Totales"
+    },
+    "recentActivity": "Actividad Reciente",
+    "noActivity": "Sin actividad reciente"
+  },
+
+  "properties": {
+    "title": "Supervisión de Propiedades",
+    "subtitle": "Ver todas las propiedades del sistema",
+    "viewOnly": "Tienes acceso de solo visualización a las propiedades",
+    "totalProperties": "Propiedades Totales",
+    "activeProperties": "Activas",
+    "inactiveProperties": "Inactivas",
+    "totalRooms": "Habitaciones Totales",
+    "search": "Buscar propiedades...",
+    "noData": "No se encontraron propiedades"
+  },
+
+  "bookings": {
+    "title": "Supervisión de Reservas",
+    "subtitle": "Ver todas las reservas",
+    "viewOnly": "Tienes acceso de solo visualización a las reservas",
+    "totalBookings": "Reservas Totales",
+    "search": "Buscar por email del huésped...",
+    "noData": "No se encontraron reservas"
+  }
+}
+
+
+
