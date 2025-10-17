@@ -42,7 +42,7 @@ export const Login: React.FC = () => {
   const onSubmit = async (data: LoginData) => {
     try {
       // Call real backend authentication API
-      const response = await fetch(`${API_URL}/login`, {
+      const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
