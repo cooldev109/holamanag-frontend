@@ -13,6 +13,8 @@ import { Building2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import type { Role } from '@/auth/store';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1';
+
 const loginSchema = z.object({
   email: z.string().email('Invalid email format'),
   password: z.string().min(1, 'Password is required'),
@@ -40,7 +42,7 @@ export const Login: React.FC = () => {
   const onSubmit = async (data: LoginData) => {
     try {
       // Call real backend authentication API
-      const response = await fetch('http://localhost:3000/api/v1/auth/login', {
+      const response = await fetch(`${API_URL}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

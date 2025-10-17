@@ -15,6 +15,8 @@ import { useToast } from '@/hooks/use-toast';
 import { getProperties, type Property } from '@/api/properties';
 import websocketService from '@/services/websocket';
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1';
+
 interface ChannelBooking {
   channel: string;
   status: string;
@@ -226,7 +228,7 @@ export const AdminInventory: React.FC = () => {
     setChannelsLoading(true);
     try {
       // Fetch active channels from backend
-      const response = await fetch('http://localhost:3000/api/v1/channels?isActive=true', {
+      const response = await fetch(`${API_URL}/channels?isActive=true`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
