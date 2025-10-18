@@ -4,6 +4,7 @@ import { persist } from 'zustand/middleware';
 export type Role = 'superadmin' | 'admin' | 'supervisor' | 'client';
 
 export interface User {
+  id: string;
   email: string;
   roles: Role[];
   locale?: 'en' | 'es' | 'de' | 'pt' | 'nl';

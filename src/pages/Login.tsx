@@ -72,6 +72,7 @@ export const Login: React.FC = () => {
 
       setAuth({
         user: {
+          id: user._id || user.id,
           email: user.email,
           roles: user.roles,
           locale: i18n.language as 'en' | 'es' | 'de' | 'pt' | 'nl',

@@ -188,7 +188,7 @@ export const PropertyForm: React.FC = () => {
       const propertyData = {
         name: data.name,
         propertyType: data.type,
-        status: data.status,
+        status: data.status === 'draft' ? 'active' : data.status,
         description: data.description,
         address: {
           street: data.address,
@@ -202,15 +202,17 @@ export const PropertyForm: React.FC = () => {
           },
         },
         contactInfo: {
-          phone: data.phone,
+          phone: data.phone.startsWith('+') || /^[1-9]/.test(data.phone) ? data.phone : `+${data.phone}`,
           email: data.email,
           website: data.website || undefined,
         },
         amenities: selectedAmenities,
+        photos: [],
         policies: {
           checkInTime: data.checkInTime,
           checkOutTime: data.checkOutTime,
           cancellationPolicy: data.cancellationPolicy,
+          houseRules: [],
         },
         settings: {
           currency: 'USD',
@@ -258,9 +260,21 @@ export const PropertyForm: React.FC = () => {
       navigate('/admin/properties');
     } catch (error: any) {
       console.error('Failed to save property:', error);
+      console.error('Error details:', error.response?.data);
+      
+      // Extract validation errors if available
+      let errorMessage = error.response?.data?.message || 'There was an error saving the property. Please try again.';
+      
+      if (error.response?.data?.errors && Array.isArray(error.response.data.errors)) {
+        const validationErrors = error.response.data.errors
+          .map((err: any) => `${err.field}: ${err.message}`)
+          .join(', ');
+        errorMessage = `Validation errors: ${validationErrors}`;
+      }
+      
       toast({
         title: 'Error',
-        description: error.response?.data?.message || 'There was an error saving the property. Please try again.',
+        description: errorMessage,
         variant: 'destructive',
       });
     }

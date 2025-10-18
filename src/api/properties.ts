@@ -139,6 +139,7 @@ export const getProperty = async (id: string): Promise<Property> => {
  */
 export const createProperty = async (data: Partial<Property>): Promise<Property> => {
   try {
+    console.log('Creating property with data:', data);
     const response = await client.post<PropertyResponse>('/properties', data);
     const property = response.data.data;
     
@@ -146,8 +147,10 @@ export const createProperty = async (data: Partial<Property>): Promise<Property>
       ...property,
       id: property._id || property.id,
     };
-  } catch (error) {
+  } catch (error: any) {
     console.error('Failed to create property:', error);
+    console.error('Error response:', error.response?.data);
+    console.error('Error status:', error.response?.status);
     throw error;
   }
 };
