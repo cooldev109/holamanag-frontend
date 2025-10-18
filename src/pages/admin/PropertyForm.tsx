@@ -23,6 +23,8 @@ import { useToast } from '@/hooks/use-toast';
 import { AMENITIES, getAmenitiesByCategory } from '@/data/amenities';
 import { MOCK_PROPERTIES } from '@/data/mockProperties';
 import type { PropertyFormData, PropertyType, PropertyStatus } from '@/types/property';
+import { createProperty, updateProperty, getProperty } from '@/api/properties';
+import { useAuthStore } from '@/auth/store';
 
 const propertyFormSchema = z.object({
   name: z.string().min(3, 'Property name must be at least 3 characters'),
@@ -61,10 +63,12 @@ export const PropertyForm: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { user } = useAuthStore();
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [existingProperty, setExistingProperty] = useState<any>(null);
 
   const isEditMode = id !== 'new' && id !== undefined;
-  const existingProperty = isEditMode ? MOCK_PROPERTIES.find(p => p.id === id) : null;
 
   const {
     register,
@@ -109,9 +113,52 @@ export const PropertyForm: React.FC = () => {
 
   React.useEffect(() => {
     if (existingProperty) {
-      setSelectedAmenities(existingProperty.amenities);
+      setSelectedAmenities(existingProperty.amenities || []);
     }
   }, [existingProperty]);
+
+  // Load existing property data
+  React.useEffect(() => {
+    if (isEditMode && id) {
+      setLoading(true);
+      getProperty(id)
+        .then((property) => {
+          setExistingProperty(property);
+          // Set form values
+          setValue('name', property.name);
+          setValue('type', property.type || property.propertyType as PropertyType);
+          setValue('status', property.status as PropertyStatus);
+          setValue('description', property.description || '');
+          setValue('address', property.address?.street || '');
+          setValue('city', property.address?.city || '');
+          setValue('state', property.address?.state || '');
+          setValue('country', property.address?.country || '');
+          setValue('zipCode', property.address?.postalCode || '');
+          setValue('phone', property.contact?.phone || '');
+          setValue('email', property.contact?.email || '');
+          setValue('website', property.contact?.website || '');
+          setValue('totalRooms', property.rooms?.length || 1);
+          setValue('checkInTime', property.policies?.checkInTime || '15:00');
+          setValue('checkOutTime', property.policies?.checkOutTime || '11:00');
+          setValue('cancellationPolicy', property.policies?.cancellationPolicy || '');
+          setValue('autoConfirmBookings', property.settings?.autoConfirmBookings || false);
+          setValue('allowInstantBooking', property.settings?.allowInstantBooking || false);
+          setValue('requireDeposit', property.settings?.requireDeposit || false);
+          setValue('depositAmount', property.settings?.depositAmount || 0);
+          setSelectedAmenities(property.amenities || []);
+        })
+        .catch((error) => {
+          console.error('Failed to load property:', error);
+          toast({
+            title: 'Error',
+            description: 'Failed to load property. Please try again.',
+            variant: 'destructive',
+          });
+          navigate('/admin/properties');
+        })
+        .finally(() => setLoading(false));
+    }
+  }, [isEditMode, id, navigate, toast, setValue]);
 
   const selectedType = watch('type');
   const selectedStatus = watch('status');
@@ -127,18 +174,93 @@ export const PropertyForm: React.FC = () => {
 
   const onSubmit = async (data: PropertyFormValues) => {
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Ensure user is authenticated
+      if (!user?.id) {
+        toast({
+          title: 'Error',
+          description: 'You must be logged in to create a property.',
+          variant: 'destructive',
+        });
+        return;
+      }
 
-      toast({
-        title: isEditMode ? 'Property updated' : 'Property created',
-        description: `${data.name} has been ${isEditMode ? 'updated' : 'created'} successfully.`,
-      });
+      // Transform form data to match API schema
+      const propertyData = {
+        name: data.name,
+        propertyType: data.type,
+        status: data.status,
+        description: data.description,
+        address: {
+          street: data.address,
+          city: data.city,
+          state: data.state,
+          country: data.country,
+          postalCode: data.zipCode,
+          coordinates: {
+            latitude: 0, // You can add a geocoding service later
+            longitude: 0,
+          },
+        },
+        contactInfo: {
+          phone: data.phone,
+          email: data.email,
+          website: data.website || undefined,
+        },
+        amenities: selectedAmenities,
+        policies: {
+          checkInTime: data.checkInTime,
+          checkOutTime: data.checkOutTime,
+          cancellationPolicy: data.cancellationPolicy,
+        },
+        settings: {
+          currency: 'USD',
+          timezone: 'UTC',
+          language: 'en',
+          autoConfirmBookings: data.autoConfirmBookings,
+          requireGuestVerification: true,
+        },
+        // Set owner and manager to current user
+        owner: user.id,
+        manager: user.id,
+        // Add a default room if creating new property
+        rooms: isEditMode ? existingProperty?.rooms : [
+          {
+            name: 'Standard Room',
+            type: 'single',
+            capacity: {
+              adults: 2,
+              children: 1,
+              infants: 0,
+            },
+            baseRate: 100,
+            currency: 'USD',
+            isActive: true,
+            amenities: [],
+            photos: [],
+          },
+        ],
+      };
+
+      if (isEditMode && id) {
+        await updateProperty(id, propertyData);
+        toast({
+          title: 'Success',
+          description: `${data.name} has been updated successfully.`,
+        });
+      } else {
+        await createProperty(propertyData);
+        toast({
+          title: 'Success',
+          description: `${data.name} has been created successfully.`,
+        });
+      }
 
       navigate('/admin/properties');
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Failed to save property:', error);
       toast({
         title: 'Error',
-        description: 'There was an error saving the property. Please try again.',
+        description: error.response?.data?.message || 'There was an error saving the property. Please try again.',
         variant: 'destructive',
       });
     }

@@ -87,6 +87,76 @@ export const Bookings: React.FC = () => {
   const [paymentFilter, setPaymentFilter] = useState<PaymentStatus | 'all'>('all');
   const [activeTab, setActiveTab] = useState<string>('all');
 
+  // Export bookings to CSV
+  const handleExport = () => {
+    // Helper function to safely format dates
+    const formatDate = (date: any, formatStr: string): string => {
+      try {
+        if (!date) return 'N/A';
+        const dateObj = typeof date === 'string' ? new Date(date) : date;
+        if (isNaN(dateObj.getTime())) return 'N/A';
+        return format(dateObj, formatStr);
+      } catch (error) {
+        return 'N/A';
+      }
+    };
+
+    // Define CSV headers
+    const headers = [
+      'Confirmation Code',
+      'Guest Name',
+      'Guest Email',
+      'Guest Phone',
+      'Property',
+      'Room',
+      'Check In',
+      'Check Out',
+      'Nights',
+      'Guests',
+      'Status',
+      'Payment Status',
+      'Total Amount',
+      'Channel',
+      'Booking Date'
+    ];
+
+    // Convert filtered bookings to CSV rows
+    const rows = filteredBookings.map(booking => [
+      booking.confirmationCode || 'N/A',
+      `${booking.guest?.firstName || ''} ${booking.guest?.lastName || ''}`.trim() || 'N/A',
+      booking.guest?.email || 'N/A',
+      booking.guest?.phone || 'N/A',
+      booking.propertyName || 'N/A',
+      booking.roomName || 'N/A',
+      formatDate(booking.checkIn, 'yyyy-MM-dd'),
+      formatDate(booking.checkOut, 'yyyy-MM-dd'),
+      booking.nights?.toString() || 'N/A',
+      `${booking.guests?.adults || 0} adults, ${booking.guests?.children || 0} children`,
+      booking.status || 'N/A',
+      booking.paymentStatus || 'N/A',
+      `$${(booking.totalAmount || 0).toFixed(2)}`,
+      booking.channel || 'N/A',
+      formatDate(booking.createdAt, 'yyyy-MM-dd HH:mm')
+    ]);
+
+    // Create CSV content
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
+    ].join('\n');
+
+    // Create and trigger download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `bookings_export_${format(new Date(), 'yyyy-MM-dd_HHmmss')}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   // Filter bookings based on search and filters
   const filteredBookings = useMemo(() => {
     return bookings.filter((booking) => {
@@ -484,7 +554,7 @@ export const Bookings: React.FC = () => {
           <p className="text-sm text-muted-foreground">
             Showing {filteredBookings.length} of {bookings.length} bookings
           </p>
-          <Button variant="outline" size="sm">
+          <Button variant="outline" size="sm" onClick={handleExport}>
             <Download className="h-4 w-4 mr-2" />
             Export
           </Button>

@@ -11,22 +11,29 @@ class WebSocketService {
    */
   connect(): void {
     if (this.socket?.connected) {
+      console.log('[WebSocket] Already connected');
       return;
     }
 
+    console.log('[WebSocket] Attempting to connect to:', SOCKET_URL);
+
     this.socket = io(SOCKET_URL, {
-      transports: ['websocket', 'polling'],
+      transports: ['polling', 'websocket'],
       reconnection: true,
       reconnectionDelay: 1000,
-      reconnectionAttempts: 5
+      reconnectionAttempts: 5,
+      withCredentials: false,
+      path: '/socket.io'
     });
 
     this.socket.on('connect', () => {
       this.connected = true;
+      console.log('[WebSocket] Connected successfully! Socket ID:', this.socket?.id);
     });
 
     this.socket.on('disconnect', () => {
       this.connected = false;
+      console.log('[WebSocket] Disconnected');
     });
 
     this.socket.on('connect_error', (error) => {
