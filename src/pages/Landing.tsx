@@ -13,6 +13,7 @@ import { Picture } from '@/components/ui/picture';
 import { CheckCircle2, ArrowDown, Zap, Target, BarChart3 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { submitLeadForm } from '@/api/client';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -195,6 +196,11 @@ export const Landing: React.FC = () => {
     <>
       <SEOMeta />
       <div className="min-h-screen">
+        {/* Language Switcher - Top Right */}
+        <div className="fixed top-4 right-4 z-50">
+          <LanguageSwitcher />
+        </div>
+
         {/* Hero Section */}
         <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
           {/* Background Image with Parallax */}

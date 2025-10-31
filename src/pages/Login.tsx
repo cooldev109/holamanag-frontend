@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Building2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import type { Role } from '@/auth/store';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api/v1';
@@ -118,6 +119,11 @@ export const Login: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
+      {/* Language Switcher - Top Right */}
+      <div className="absolute top-4 right-4 z-20">
+        <LanguageSwitcher />
+      </div>
+
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-pulse" />

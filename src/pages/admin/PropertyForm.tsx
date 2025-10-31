@@ -29,7 +29,7 @@ import { useAuthStore } from '@/auth/store';
 const propertyFormSchema = z.object({
   name: z.string().min(3, 'Property name must be at least 3 characters'),
   type: z.enum(['hotel', 'apartment', 'villa', 'hostel', 'resort']),
-  status: z.enum(['active', 'inactive', 'maintenance', 'draft']),
+  status: z.enum(['active', 'inactive', 'maintenance', 'suspended']),
   description: z.string().min(20, 'Description must be at least 20 characters'),
 
   // Location
@@ -101,7 +101,7 @@ export const PropertyForm: React.FC = () => {
       depositAmount: existingProperty.depositAmount,
     } : {
       type: 'hotel',
-      status: 'draft',
+      status: 'active',
       autoConfirmBookings: false,
       allowInstantBooking: false,
       requireDeposit: false,
@@ -184,11 +184,26 @@ export const PropertyForm: React.FC = () => {
         return;
       }
 
+      // Format phone number to match backend validation regex: /^[\+]?[1-9][\d]{0,15}$/
+      let formattedPhone = data.phone.replace(/[^\d+]/g, ''); // Remove all except digits and +
+
+      // Ensure phone matches backend regex
+      if (!formattedPhone.startsWith('+') && /^[0-9]/.test(formattedPhone)) {
+        // If starts with 0, prepend +1 (assuming US)
+        if (formattedPhone.startsWith('0')) {
+          formattedPhone = '+1' + formattedPhone.substring(1);
+        }
+        // If starts with 1-9 but no +, add + prefix
+        else if (/^[1-9]/.test(formattedPhone)) {
+          formattedPhone = '+' + formattedPhone;
+        }
+      }
+
       // Transform form data to match API schema
       const propertyData = {
         name: data.name,
         propertyType: data.type,
-        status: data.status === 'draft' ? 'active' : data.status,
+        status: data.status,
         description: data.description,
         address: {
           street: data.address,
@@ -202,7 +217,7 @@ export const PropertyForm: React.FC = () => {
           },
         },
         contactInfo: {
-          phone: data.phone.startsWith('+') || /^[1-9]/.test(data.phone) ? data.phone : `+${data.phone}`,
+          phone: formattedPhone,
           email: data.email,
           website: data.website || undefined,
         },
@@ -383,7 +398,7 @@ export const PropertyForm: React.FC = () => {
                         <SelectItem value="active">Active</SelectItem>
                         <SelectItem value="inactive">Inactive</SelectItem>
                         <SelectItem value="maintenance">Maintenance</SelectItem>
-                        <SelectItem value="draft">Draft</SelectItem>
+                        <SelectItem value="suspended">Suspended</SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.status && (

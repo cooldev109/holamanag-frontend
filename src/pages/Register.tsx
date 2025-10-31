@@ -12,6 +12,7 @@ import { Label } from '@/components/ui/label';
 import { Building2, Eye, EyeOff } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import type { Role } from '@/auth/store';
 
 const registerSchema = z.object({
@@ -95,7 +96,12 @@ export const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-subtle">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-gradient-subtle relative">
+      {/* Language Switcher - Top Right */}
+      <div className="absolute top-4 right-4 z-20">
+        <LanguageSwitcher />
+      </div>
+
       <Card className="w-full max-w-2xl">
         <CardHeader className="text-center">
           <div className="flex items-center justify-center gap-2 mb-4">

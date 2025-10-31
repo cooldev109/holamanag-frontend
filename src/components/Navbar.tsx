@@ -94,7 +94,7 @@ export const Navbar: React.FC = () => {
                   )}
                 >
                   <LayoutDashboard className="h-4 w-4" />
-                  Dashboard
+                  {t('nav.dashboard')}
                 </Link>
                 <Link
                   to="/admin/bookings"
@@ -106,7 +106,7 @@ export const Navbar: React.FC = () => {
                   )}
                 >
                   <Calendar className="h-4 w-4" />
-                  Bookings
+                  {t('nav.bookings')}
                 </Link>
                 <Link
                   to="/admin/reservations"
@@ -118,7 +118,7 @@ export const Navbar: React.FC = () => {
                   )}
                 >
                   <Calendar className="h-4 w-4" />
-                  Reservations
+                  {t('nav.reservations')}
                 </Link>
                 <Link
                   to="/admin/inventory"
@@ -130,7 +130,7 @@ export const Navbar: React.FC = () => {
                   )}
                 >
                   <Package className="h-4 w-4" />
-                  Inventory
+                  {t('nav.inventory')}
                 </Link>
                 <Link
                   to="/admin/properties"
@@ -142,7 +142,7 @@ export const Navbar: React.FC = () => {
                   )}
                 >
                   <Building2 className="h-4 w-4" />
-                  Properties
+                  {t('nav.properties')}
                 </Link>
                 <Link
                   to="/admin/rates"
@@ -154,7 +154,7 @@ export const Navbar: React.FC = () => {
                   )}
                 >
                   <DollarSign className="h-4 w-4" />
-                  Rates
+                  {t('nav.rates')}
                 </Link>
               </>
             )}
@@ -172,7 +172,7 @@ export const Navbar: React.FC = () => {
                   )}
                 >
                   <LayoutDashboard className="h-4 w-4" />
-                  Dashboard
+                  {t('nav.dashboard')}
                 </Link>
                 <Link
                   to="/client/reservations"
@@ -184,7 +184,7 @@ export const Navbar: React.FC = () => {
                   )}
                 >
                   <Calendar className="h-4 w-4" />
-                  My Reservations
+                  {t('nav.myReservations')}
                 </Link>
               </>
             )}
@@ -226,13 +226,13 @@ export const Navbar: React.FC = () => {
                   <DropdownMenuItem asChild>
                     <Link to="/profile" className="cursor-pointer flex items-center">
                       <User className="mr-2 h-4 w-4" />
-                      <span>Profile</span>
+                      <span>{t('nav.profile')}</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild>
                     <Link to="/settings" className="cursor-pointer flex items-center">
                       <Settings className="mr-2 h-4 w-4" />
-                      <span>Settings</span>
+                      <span>{t('nav.settings')}</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
@@ -251,7 +251,7 @@ export const Navbar: React.FC = () => {
                   <Link to="/login">{t('nav.login')}</Link>
                 </Button>
                 <Button asChild size="sm">
-                  <Link to="/register">Sign Up</Link>
+                  <Link to="/register">{t('nav.signUp')}</Link>
                 </Button>
               </div>
             )}

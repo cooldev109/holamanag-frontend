@@ -146,15 +146,32 @@ export const TeamManagement = () => {
         await client.post('/users/team', formData);
         toast({ description: t('admin:team.createSuccess') });
       }
-      
+
       setIsDialogOpen(false);
       setEditingMember(null);
       resetForm();
       fetchTeamMembers();
-    } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : t('common:error');
+    } catch (err: any) {
+      console.error('Error creating/updating team member:', err);
+
+      // Extract detailed error message from backend response
+      let errorMessage = t('common:error');
+
+      if (err.response?.data?.errors && Array.isArray(err.response.data.errors)) {
+        // Backend validation errors
+        const errorMessages = err.response.data.errors
+          .map((e: any) => `${e.field}: ${e.message}`)
+          .join(', ');
+        errorMessage = errorMessages;
+      } else if (err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+
       toast({
         variant: 'destructive',
+        title: 'Error',
         description: errorMessage
       });
     }
